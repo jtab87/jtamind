@@ -1,0 +1,101 @@
+{
+  "type": "component",
+  "metadata": {},
+  "schema": {
+    "name": "jtamind",
+    "friendlyName": "jtamind",
+    "description": "mind map pour budiBase",
+    "icon": "DataMapping",
+    "settings": [
+      {
+        "type": "text",
+        "key": "value",
+        "label": "Contenu",
+        "defaultValue": "# niv0\n\n## niv1\n- niv1.1\n- niv1.2"
+      },
+      {
+        "type": "number",
+        "key": "mindHeight",
+        "label": "Hauteur (px)",
+        "defaultValue": 500,
+        "min": 200
+      },
+      {
+        "type": "number",
+        "key": "duration",
+        "label": "Tempo. (ms)",
+        "defaultValue": 100,
+        "max": 800
+      },
+      {
+        "type": "select",
+        "label": "Couleur",
+        "key": "color",
+        "options": [
+          {
+            "label": "Défaut",
+            "value": "defaut"
+          },
+          {
+            "label": "Bleu",
+            "value": "blue"
+          },
+          {
+            "label": "Rouge",
+            "value": "red"
+          },
+          {
+            "label": "Vert",
+            "value": "green"
+          },
+          {
+            "label": "Noir",
+            "value": "black"
+          }
+        ],
+        "defaultValue": "defaut"
+      },
+      {
+        "type": "event",
+        "label": "OnClick",
+        "key": "clickItem",
+        "context": [
+          {
+            "label": "Item",
+            "key": "value"
+          }
+        ]
+      },
+      {
+        "section": true,
+        "name": "Branches",
+        "settings": [
+          {
+            "type": "number",
+            "key": "spacingVertical",
+            "label": "Espacement vertical (px)",
+            "defaultValue": 8
+          },
+          {
+            "type": "number",
+            "key": "spacingHorizontal",
+            "label": "Espacement horizontal (px)",
+            "defaultValue": 50
+          },
+          {
+            "type": "number",
+            "key": "paddingX",
+            "label": "Padding X (px)",
+            "defaultValue": 5
+          },
+          {
+            "type": "number",
+            "key": "brancheWidth",
+            "label": "Largeur max (px)",
+            "defaultValue": 0
+          }
+        ]
+      }
+    ]
+  }
+}

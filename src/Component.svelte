@@ -14,14 +14,6 @@
   export let paddingX = 5;
   export let color = "defaut";
 
-  export let clickItem;
-
-  function clicx1(id) {
-    clickItem({
-      value: "toto=" + id,
-    });
-  }
-
   let mindWidth = "100%";
   let markdown;
   let mindmap;
@@ -68,8 +60,6 @@
     if (scripts) loadJS(scripts, { getMarkmap: () => markmap });
 
     const options = {
-      //style: id => 'div{padding-bottom:0.25em!important} g g:last-of-type div{font-weight:bold; font-size:18px} foreignObject{overflow:visible!important; transform:translateX(-1%)} g g:last-of-type rect {transform:scaleX(125%) translateX(-3%)}',
-      //style: id => 'div{padding-bottom:0.3em!important} g g:last-of-type div{font-weight:bold;} foreignObject{overflow:visible!important; transform:translateX(-1%)}',
       duration: duration,
       style: (id) => "div{padding-bottom:0.12em!important}",
       spacingVertical: spacingVertical,

@@ -56,17 +56,6 @@
         "defaultValue": "defaut"
       },
       {
-        "type": "event",
-        "label": "OnClick",
-        "key": "clickItem",
-        "context": [
-          {
-            "label": "Item",
-            "key": "value"
-          }
-        ]
-      },
-      {
         "section": true,
         "name": "Branches",
         "settings": [

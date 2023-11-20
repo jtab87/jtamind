@@ -18,6 +18,7 @@
   let markdown;
   let mindmap;
   let expand = true;
+  let opts = YAML.parse(value, { separator: "\n---\n" }) || {};
 
   const { styleable } = getContext("sdk");
   const component = getContext("component");
@@ -27,6 +28,31 @@
     console.log(YAML.parse(value, { separator: "\n---\n" }));
   }
 */
+
+  function createSVG(mm) {
+    mm = mm.innerHTML;
+    mm = mm.replace(/<br>/g, "<br/>");
+    mm = mm.replace(/\n/g, " ");
+    mm =
+      '<svg id="markmap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="' +
+      mindmap.className["baseVal"] +
+      '" style="width: 100%; height: 983px;">' +
+      mm +
+      "</svg>";
+    return mm;
+  }
+
+  function saveData() {
+    let textToWrite = createSVG(mindmap);
+    let textFileAsBlob = new Blob([textToWrite], { type: "text/plain" });
+    let downloadLink = document.getElementById("jta");
+    downloadLink.download = "ofn.svg";
+    downloadLink.innerHTML = "Télécharger";
+    downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+    downloadLink.click();
+    window.URL.revokeObjectURL(downloadLink.href);
+  }
+
   function replaceMarkdown(md) {
     md = md.replace(
       /(?<!#)# (.*)\n/g,
@@ -72,6 +98,14 @@
       options.color = function (elt) {
         return color;
       };
+
+    if (opts.markmap) {
+      if (opts.markmap.colorFreezeLevel)
+        options.colorFreezeLevel = opts.markmap.colorFreezeLevel;
+      if (opts.markmap.initialExpandLevel)
+        options.initialExpandLevel = opts.markmap.initialExpandLevel;
+    }
+
     if (expand === false) options.initialExpandLevel = 0;
 
     mindmap.innerHTML = "";
@@ -84,6 +118,8 @@
     <a href="view" title="ferme/ouvre" on:click|preventDefault={expandOuiNon}>
       {#if expand}⬅️{:else}➡️{/if}
     </a>
+    <a href="#saveSVG" on:click|preventDefault={saveData}>💾</a>
+    <a href="#saveSVG" style="display:none" id="jta">clic</a>
   </div>
   <div id="mind">
     <svg

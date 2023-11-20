@@ -16,7 +16,18 @@ Permet de transformer un contenu au format **MarkDown** en MindMap
 - **Largeur max** : largeur maximum d'une branche (0 = pas de maximum)
 - **Couleur** : Couleur des branches ("Défaut" = couleurs par défaut)
 
-> **Attention** : Ce composant masquera tous les composants placés **en dessous**. 
+> **Attention** : Ce composant masquera tous les composants placés **en dessous**
+
+### Entête possible dans le markdown
+```
+---
+markmap:
+  colorFreezeLevel: 2
+  initialExpandLevel: 1
+  color: '#2980b9'
+---
+```
+
 
 ## Manipulation du MapMind
 
@@ -41,34 +52,6 @@ Permet de transformer un contenu au format **MarkDown** en MindMap
   text
 - `inline code`
 - avec un emoj 🔶
-```
-# Code ajeter
-```
-let rows = $("DP ofn.Rows");
-let niveau = 0;
-let ret = ["# OFN2"];
-
-function encadre(libelle, nature, pere) {
-  if(nature == "A") return "- ==" + libelle + "==";
-  if(pere == "root") return "## **" + libelle + "**";
-  return "### **" + libelle + "**";
-}
-
-function cherchefils(pere) {
-  for(let i=0; i<rows.length; i++) {
-    if(rows[i].pere == pere) {
-      // Je suis le fils de "pere"
-      ret.push(encadre(rows[i].libelle, rows[i].nature, pere));
-
-      // je cherche mes fils
-      niveau++;
-      if(rows[i].nature == "P") cherchefils(rows[i].code);
-      niveau--;
-    }
-  }
-}
-cherchefils("root");
-return ret.join("\n");
 ```
 
 # Librairies utilisées

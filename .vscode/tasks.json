@@ -41,6 +41,19 @@
                 "panel": "new"
             },
             "problemMatcher": []
+        },
+        {
+            "label": "BUILD jtamind (one shot)",
+            "type": "shell",
+            "command": "./build.cmd",
+            "windows": {
+                "command": ".\\build.cmd"
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
         }
     ]
 }

@@ -94,9 +94,9 @@
       };
 
     if (opts.markmap) {
-      if (opts.markmap.colorFreezeLevel)
+      if (opts.markmap.colorFreezeLevel !== undefined)
         options.colorFreezeLevel = opts.markmap.colorFreezeLevel;
-      if (opts.markmap.initialExpandLevel)
+      if (opts.markmap.initialExpandLevel !== undefined)
         options.initialExpandLevel = opts.markmap.initialExpandLevel;
     }
 

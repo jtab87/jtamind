@@ -19,20 +19,25 @@ Permet de transformer un contenu au format **MarkDown** en MindMap
 > **Attention** : Ce composant masquera tous les composants placés **en dessous**
 
 ### Entête possible dans le markdown
+
+Il est possible d'ajouter une entête sous cette forme : 
 ```
 ---
 markmap:
-  colorFreezeLevel: 2
-  initialExpandLevel: 1
-  color: '#2980b9'
+  clé: valeur
+  clé: valeur
 ---
 ```
-
+Cette entête permet de spécifier les paramètres d'affichage mentionnés [ICI](https://markmap.js.org/docs/json-options). Quelques exemples : 
+- colorFreezeLevel: 0
+- initialExpandLevel: 1
+- ...
 
 ## Manipulation du MapMind
 
 - Molette souris : Zoom +/-
 - ⬅️➡️ : ouvrir / fermer tous les noeuds
+- 💾 : Enregistrer le SVG
 - Cliquer + tirer : déplace le mindmap
 
 ## Exemple de markdown

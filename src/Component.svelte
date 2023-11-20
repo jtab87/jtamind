@@ -23,12 +23,6 @@
   const { styleable } = getContext("sdk");
   const component = getContext("component");
 
-  /*
-  $: {
-    console.log(YAML.parse(value, { separator: "\n---\n" }));
-  }
-*/
-
   function createSVG(mm) {
     mm = mm.innerHTML;
     mm = mm.replace(/<br>/g, "<br/>");
@@ -36,7 +30,7 @@
     mm =
       '<svg id="markmap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="' +
       mindmap.className["baseVal"] +
-      '" style="width: 100%; height: 983px;">' +
+      '" style="width: 100%; height: ' + mindHeight + 'px;">' +
       mm +
       "</svg>";
     return mm;
@@ -46,8 +40,8 @@
     let textToWrite = createSVG(mindmap);
     let textFileAsBlob = new Blob([textToWrite], { type: "text/plain" });
     let downloadLink = document.getElementById("jta");
-    downloadLink.download = "ofn.svg";
-    downloadLink.innerHTML = "Télécharger";
+    downloadLink.download = "mindmap.svg";
+    //downloadLink.innerHTML = "Télécharger";
     downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
     downloadLink.click();
     window.URL.revokeObjectURL(downloadLink.href);
@@ -118,7 +112,7 @@
     <a href="view" title="ferme/ouvre" on:click|preventDefault={expandOuiNon}>
       {#if expand}⬅️{:else}➡️{/if}
     </a>
-    <a href="#saveSVG" on:click|preventDefault={saveData}>💾</a>
+    <a href="#saveSVG" title="Enregistrer" on:click|preventDefault={saveData}>💾</a>
     <a href="#saveSVG" style="display:none" id="jta">clic</a>
   </div>
   <div id="mind">

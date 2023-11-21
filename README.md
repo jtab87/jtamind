@@ -1,6 +1,78 @@
 # Jtamind
 
 # Description
+MindMap Plugin for budiBase
+
+Allows transforming content in **MarkDown** format into a MindMap.
+
+## configuration
+
+- **Contenu**: Content in markdown format (See example below)
+- **Hauteur**: Height of the window that will contain the mind map (minimum: 200px)
+- **Tempo**: Delay (in ms) used to make branches appear/disappear. (0 = no delay)
+- **Espacement vertical**: Vertical space between branches
+- **Espacement horizontal**: Horizontal space between nodes in the same branch
+- **Padding X**: Space between node and text
+- **Largeur max**: Maximum width of a branch (0 = no maximum)
+- **Couleur**: Branches' color ("Defaut" = default colors)
+
+> **Warning**: This component will hide all components placed **below**
+
+### An additional header can be added in the markdown
+ 
+```
+---
+markmap:
+  key: value
+  key: value
+---
+```
+This header allows setting the display parameters mentioned [HERE](https://markmap.js.org/docs/json-options). Some examples: 
+- colorFreezeLevel: 0
+- initialExpandLevel: 1
+- ...
+
+## Manipulation of MapMind
+
+- Mouse wheel: Zoom +/-
+- ⬅️➡️: Expand / collapse all nodes
+- 💾: Save the SVG
+- Click + drag: Moves the mind map
+
+## Example
+
+### The markdown
+```
+# root
+
+## Links
+
+- <https://markmap.js.org/>
+- [GitHub](https://github.com/gera2ld/markmap)
+
+## Some formatting
+
+- **strong** ~~del~~ *italic* ==highlight==
+- multiline
+  text
+- `inline code`
+- with an emoji 🔶
+```
+### The result
+<img src="./src/images//1.png" width="600px" height="400px"/>
+
+# Used Libraries
+
+- Utilizes **markmap-lib** and **markmap-view** components from the library [markmap](https://markmap.js.org/docs/markmap) 
+- Inspired by [this example](https://svelte.dev/repl/9499dbcf3f3240e4af42e38ab19cc9ea?version=3.47.0)
+
+Find out more about [Budibase](https://github.com/Budibase/budibase).
+
+<hr>
+
+# Version française
+
+# Description
 Plugin MindMap pour budiBase
 
 Permet de transformer un contenu au format **MarkDown** en MindMap
@@ -18,9 +90,8 @@ Permet de transformer un contenu au format **MarkDown** en MindMap
 
 > **Attention** : Ce composant masquera tous les composants placés **en dessous**
 
-### Entête possible dans le markdown
-
-Il est possible d'ajouter une entête sous cette forme : 
+### On peut ajouter une entête dans le markdown
+ 
 ```
 ---
 markmap:
@@ -28,7 +99,7 @@ markmap:
   clé: valeur
 ---
 ```
-Cette entête permet de spécifier les paramètres d'affichage mentionnés [ICI](https://markmap.js.org/docs/json-options). Quelques exemples : 
+Cette entête permet de positionner les paramètres d'affichage mentionnés [ICI](https://markmap.js.org/docs/json-options). Quelques exemples : 
 - colorFreezeLevel: 0
 - initialExpandLevel: 1
 - ...
@@ -40,8 +111,9 @@ Cette entête permet de spécifier les paramètres d'affichage mentionnés [ICI]
 - 💾 : Enregistrer le SVG
 - Cliquer + tirer : déplace le mindmap
 
-## Exemple de markdown
+## Exemple
 
+### Le markdown
 ```
 # racine
 
@@ -58,6 +130,8 @@ Cette entête permet de spécifier les paramètres d'affichage mentionnés [ICI]
 - `inline code`
 - avec un emoj 🔶
 ```
+### Le résultat
+<img src="./src/images//1.png" width="600px" height="400px"/>
 
 # Librairies utilisées
 

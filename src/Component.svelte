@@ -111,9 +111,9 @@
   <div id="menu">
     <a href="view" title="ferme/ouvre" on:click|preventDefault={expandOuiNon}>
       {#if expand}
-      <i class="ri-arrow-left-right-fill ri-lg svelte-1ghy1wa"></i>
+        <i class="ri-arrow-up-down-fill ri-lg svelte-1ghy1wa"></i>
       {:else}
-      <i class="ri-arrow-left-right-fill ri-lg svelte-1ghy1wa"></i>
+        <i class="ri-arrow-left-right-fill ri-lg svelte-1ghy1wa"></i>
       {/if}
     </a>
     <a href="#saveSVG" title="Enregistrer" on:click|preventDefault={saveData}>

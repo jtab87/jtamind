@@ -111,9 +111,9 @@
   <div id="menu">
     <a href="view" title="ferme/ouvre" on:click|preventDefault={expandOuiNon}>
       {#if expand}
-        <i class="ri-arrow-up-down-fill ri-xl svelte-1ghy1wa"></i>
+      <i class="ri-arrow-left-right-fill ri-xl svelte-1ghy1wa"></i>
       {:else}
-        <i class="ri-arrow-left-right-fill ri-xl svelte-1ghy1wa"></i>
+        <i class="ri-arrow-up-down-fill ri-xl svelte-1ghy1wa"></i>
       {/if}
     </a>
     

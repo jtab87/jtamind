@@ -84,6 +84,27 @@
             "defaultValue": 0
           }
         ]
+      },
+      {
+        "section": true,
+        "name": "Actions",
+        "settings": [
+          {
+            "type": "event",
+            "label": "Click sur item",
+            "key": "clickItem",
+            "context": [
+              {
+                "label": "Identifiant",
+                "key": "identifiant"
+              },
+              {
+                "label": "Libellé",
+                "key": "libelle"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

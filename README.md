@@ -15,8 +15,19 @@ Allows transforming content in **MarkDown** format into a MindMap.
 - **Padding X**: Space between node and text
 - **Largeur max**: Maximum width of a branch (0 = no maximum)
 - **Couleur**: Branches' color ("Defaut" = default colors)
+- **Clic on item**: event executed when clicking on a label 
 
 > **Warning**: This component will hide all components placed **below**
+
+You can add an identifier for each item, by pasting it at the end, separated by an "@". Examples: 
+```
+## section@identifiant
+- libellé@identifiant
+```
+This identifier will be **hidden on display**, but will be offered in the "Click on item" event
+
+<img src="./src/images/2.png" width="200px" height="200px"/>
+
 
 ### An additional header can be added in the markdown
  
@@ -35,8 +46,8 @@ This header allows setting the display parameters mentioned [HERE](https://markm
 ## Manipulation of MapMind
 
 - Mouse wheel: Zoom +/-
-- ⬅️➡️: Expand / collapse all nodes
-- 💾: Save the SVG
+- <i class="ri-arrow-left-right-line"></i> <i class="ri-arrow-up-down-line"></i> : Expand / collapse all nodes
+- <i class="ri-save-line"></i> : Save the SVG
 - Click + drag: Moves the mind map
 
 ## Example
@@ -46,6 +57,8 @@ This header allows setting the display parameters mentioned [HERE](https://markm
 # root
 
 ## Links
+
+## Links avec identifiant@identifiant
 
 - <https://markmap.js.org/>
 - [GitHub](https://github.com/gera2ld/markmap)
@@ -59,7 +72,7 @@ This header allows setting the display parameters mentioned [HERE](https://markm
 - with an emoji 🔶
 ```
 ### The result
-<img src="./src/images//1.png" width="600px" height="400px"/>
+<img src="./src/images/1.png" width="600px" height="400px"/>
 
 # Used Libraries
 
@@ -89,6 +102,17 @@ Permet de transformer un contenu au format **MarkDown** en MindMap
 - **Couleur** : Couleur des branches ("Défaut" = couleurs par défaut)
 
 > **Attention** : Ce composant masquera tous les composants placés **en dessous**
+
+On peut ajouter un identifiant pour chaque item, en le collant à la fin, séparé par un "@". Exemples : 
+```
+## section@identifiant
+- libellé@identifiant
+```
+Cet identifiant sera **masqué à l'affichage**, mais sera proposé dans l'event "Clic sur item"
+
+
+<img src="./src/images/2.png" width="200px" height="200px"/>
+
 
 ### On peut ajouter une entête dans le markdown
  

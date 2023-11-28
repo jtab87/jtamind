@@ -13,7 +13,6 @@
   export let spacingHorizontal = 50;
   export let paddingX = 5;
   export let color = "defaut";
-  export let clickItem;
 
   let mindWidth = "100%";
   let markdown;
@@ -31,9 +30,7 @@
     mm =
       '<svg id="markmap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="' +
       mindmap.className["baseVal"] +
-      '" style="width: 100%; height: ' +
-      mindHeight +
-      'px;">' +
+      '" style="width: 100%; height: ' + mindHeight + 'px;">' +
       mm +
       "</svg>";
     return mm;
@@ -52,35 +49,23 @@
 
   function replaceMarkdown(md) {
     md = md.replace(
-      /(?<!#)# (.*?)(@(.*)||)\n/g,
-      '# <span style="font-weight:bold; font-size:1.3em; display:block; padding-bottom:0.6em; cursor:pointer;" id="$3">$1</span>\n',
+      /(?<!#)# (.*)\n/g,
+      '# <span style="font-weight:bold; font-size:1.3em; display:block; padding-bottom:0.6em">$1</span>\n'
     );
     md = md.replace(
-      /(?<!#)## (.*?)(@(.*)||)\n/g,
-      '## <span style="font-weight:bold; font-size:1em; display:block; padding-bottom:0.4em; cursor:pointer;" id="$3">$1</span>\n',
-    );
-    md = md.replace(
-      /(?<!-)- (.*?)(@(.*)||)\n/g,
-      '- <span style="cursor:pointer;" id="$3">$1</span>\n',
+      /(?<!#)## (.*)\n/g,
+      '## <span style="font-weight:bold; font-size:1em; display:block; padding-bottom:0.4em">$1</span>\n'
     );
     return md;
   }
 
   $: markdown = replaceMarkdown(
-    YAML.parse(value, { separator: "\n---\n" })._content,
+    YAML.parse(value, { separator: "\n---\n" })._content
   );
 
   function expandOuiNon() {
     expand = !expand;
   }
-
-  var clicSurSpan = function (e) {
-    if (e.target !== e.currentTarget) {
-      if (e.target.nodeName == "SPAN") {
-        clickItem({ identifiant: e.target.id, libelle: e.target.innerHTML });
-      }
-    }
-  };
 
   $: expand = expand;
 
@@ -119,9 +104,6 @@
 
     mindmap.innerHTML = "";
     Markmap.create("#markmap", options, root);
-
-    let theParent = document.querySelector("#markmap");
-    theParent.addEventListener("click", clicSurSpan, false);
   });
 </script>
 
@@ -129,12 +111,12 @@
   <div id="menu">
     <a href="view" title="ferme/ouvre" on:click|preventDefault={expandOuiNon}>
       {#if expand}
-        <i class="ri-arrow-left-right-fill ri-xl svelte-1ghy1wa"></i>
+      <i class="ri-arrow-left-right-fill ri-xl svelte-1ghy1wa"></i>
       {:else}
         <i class="ri-arrow-up-down-fill ri-xl svelte-1ghy1wa"></i>
       {/if}
     </a>
-
+    
     <a href="#saveSVG" title="Enregistrer" on:click|preventDefault={saveData}>
       <i class="ri-save-line ri-xl svelte-1ghy1wa"></i>
     </a>

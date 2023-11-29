@@ -63,6 +63,7 @@
     YAML.parse(value, { separator: "\n---\n" })._content
   );
 
+// le commentaire qui va bien
   function expandOuiNon() {
     expand = !expand;
   }

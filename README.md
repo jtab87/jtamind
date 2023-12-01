@@ -19,7 +19,7 @@ Allows transforming content in **MarkDown** format into a MindMap.
 
 > **Warning**: This component will hide all components placed **below**
 
-You can add an identifier for each item, by pasting it at the end, separated by an "@". Examples: 
+You can add an identifier for each item, by pasting it at the end, **separated by an "@"**. Examples: 
 ```
 ## section@identifiant
 - libellé@identifiant
@@ -46,30 +46,28 @@ This header allows setting the display parameters mentioned [HERE](https://markm
 ## Manipulation of MapMind
 
 - Mouse wheel: Zoom +/-
-- <i class="ri-arrow-left-right-line"></i> <i class="ri-arrow-up-down-line"></i> : Expand / collapse all nodes
-- <i class="ri-save-line"></i> : Save the SVG
+- ⬆️➡️ : Expand / collapse all nodes
+-  💾 : Save the SVG
 - Click + drag: Moves the mind map
 
 ## Example
 
 ### The markdown
 ```
-# root
+# racine
 
-## Links
-
-## Links avec identifiant@identifiant
+## Liens
 
 - <https://markmap.js.org/>
 - [GitHub](https://github.com/gera2ld/markmap)
 
-## Some formatting
+## Quelques mises en forme
 
 - **strong** ~~del~~ *italic* ==highlight==
 - multiline
   text
 - `inline code`
-- with an emoji 🔶
+- Avec un emoji 🔶
 ```
 ### The result
 <img src="./src/images/1.png" width="600px" height="400px"/>
@@ -131,7 +129,7 @@ Cette entête permet de positionner les paramètres d'affichage mentionnés [ICI
 ## Manipulation du MapMind
 
 - Molette souris : Zoom +/-
-- ⬅️➡️ : ouvrir / fermer tous les noeuds
+- ⬆️➡️ : ouvrir / fermer tous les noeuds
 - 💾 : Enregistrer le SVG
 - Cliquer + tirer : déplace le mindmap
 

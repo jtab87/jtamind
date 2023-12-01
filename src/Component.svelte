@@ -1,8 +1,7 @@
 <script>
-  import { getContext } from "svelte";
+  import { getContext, afterUpdate, onMount } from "svelte";
   import { Transformer } from "markmap-lib";
   import * as markmap from "markmap-view";
-  import { afterUpdate } from "svelte";
   import YAML from "hexo-front-matter";
 
   export let value = "# niv0\n\n## niv1\n- niv1.1\n- niv1.2";
@@ -44,7 +43,6 @@
     let textFileAsBlob = new Blob([textToWrite], { type: "text/plain" });
     let downloadLink = document.getElementById("jta");
     downloadLink.download = "mindmap.svg";
-    //downloadLink.innerHTML = "Télécharger";
     downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
     downloadLink.click();
     window.URL.revokeObjectURL(downloadLink.href);
@@ -56,8 +54,8 @@
       '# <span style="font-weight:bold; font-size:1.3em; display:block; padding-bottom:0.6em; cursor:pointer;" id="$3">$1</span>\n',
     );
     md = md.replace(
-      /(?<!#)## (.*?)(@(.*)||)\n/g,
-      '## <span style="font-weight:bold; font-size:1em; display:block; padding-bottom:0.4em; cursor:pointer;" id="$3">$1</span>\n',
+      /(?<!#)(#{2,3}) (.*?)(@(.*)||)\n/g,
+      '$1 <span style="font-weight:bold; font-size:1em; display:block; padding-bottom:0.4em; cursor:pointer;" id="$4">$2</span>\n',
     );
     md = md.replace(
       /(?<!-)- (.*?)(@(.*)||)\n/g,
@@ -72,19 +70,18 @@
 
   function expandOuiNon() {
     expand = !expand;
+    createMind();
   }
 
   var clicSurSpan = function (e) {
     if (e.target !== e.currentTarget) {
-      if (e.target.nodeName == "SPAN") {
+      if (["SPAN", "STRONG", "MARK", "EM", "DEL"].includes(e.target.nodeName)) {
         clickItem({ identifiant: e.target.id, libelle: e.target.innerHTML });
       }
     }
   };
 
-  $: expand = expand;
-
-  afterUpdate(() => {
+  function createMind() {
     const transformer = new Transformer();
 
     const { root, features } = transformer.transform(markdown);
@@ -101,6 +98,7 @@
       spacingHorizontal: spacingHorizontal,
       maxWidth: brancheWidth,
       paddingX: paddingX,
+      initialExpandLevel: expand ? -1 : 0,
     };
 
     if (color !== "defaut")
@@ -115,13 +113,16 @@
         options.initialExpandLevel = opts.markmap.initialExpandLevel;
     }
 
-    if (expand === false) options.initialExpandLevel = 0;
-
     mindmap.innerHTML = "";
     Markmap.create("#markmap", options, root);
 
     let theParent = document.querySelector("#markmap");
     theParent.addEventListener("click", clicSurSpan, false);
+  }
+
+  onMount(() => {
+    //afterUpdate(() => {
+    createMind();
   });
 </script>
 

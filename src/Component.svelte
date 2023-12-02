@@ -49,6 +49,7 @@
   }
 
   function replaceMarkdown(md) {
+    md = md + "\n";
     md = md.replace(
       /(?<!#)# (.*?)(@(.*)||)\n/g,
       '# <span style="font-weight:bold; font-size:1.3em; display:block; padding-bottom:0.6em; cursor:pointer;" id="$3">$1</span>\n',
@@ -73,6 +74,10 @@
     createMind();
   }
 
+  // pour réagir au changement de value
+  let afterMount = false;
+  $: value && createMind();
+
   var clicSurSpan = function (e) {
     if (e.target !== e.currentTarget) {
       if (["SPAN", "STRONG", "MARK", "EM", "DEL"].includes(e.target.nodeName)) {
@@ -82,6 +87,8 @@
   };
 
   function createMind() {
+    if (afterMount === false) return;
+    //console.log("*** createmind ***");
     const transformer = new Transformer();
 
     const { root, features } = transformer.transform(markdown);
@@ -122,6 +129,7 @@
 
   onMount(() => {
     //afterUpdate(() => {
+    afterMount = true;
     createMind();
   });
 </script>
